@@ -29,8 +29,6 @@ spec:
   addonsConfig:
     gcsFuseCsiDriverConfig:
       enabled: true
-    parallelstoreCsiDriverConfig:
-      enabled: true
   masterAuthorizedNetworksConfig:
     cidrBlocks:
       - cidrBlock: "0.0.0.0/0"
