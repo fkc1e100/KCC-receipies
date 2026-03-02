@@ -1,0 +1,77 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerNodePool
+metadata:
+  name: a3-ultragpu-8g-pool
+  namespace: config-control
+spec:
+  clusterRef:
+    name: a3-ultra-cluster
+  location: us-central1-b
+  initialNodeCount: 0
+  autoscaling:
+    totalMinNodeCount: 0
+    totalMaxNodeCount: 128
+  queuedProvisioning:
+    enabled: true
+  nodeConfig:
+    machineType: a3-ultragpu-8g
+    serviceAccountRef:
+      name: gke-cursor-np-sa
+    guestAccelerator:
+      - count: 8
+        type: nvidia-h200-80gb
+        gpuDriverInstallationConfig:
+          gpuDriverVersion: LATEST
+    networkConfig:
+      additionalNodeNetworkConfigs:
+        - networkRef:
+            name: a3-ultra-data-net
+          subnetworkRef:
+            name: a3-ultra-data-subnet
+        - networkRef:
+            name: a3-ultra-gpunet-0
+          subnetworkRef:
+            name: a3-ultra-gpunet-0-subnet
+        - networkRef:
+            name: a3-ultra-gpunet-1
+          subnetworkRef:
+            name: a3-ultra-gpunet-1-subnet
+        - networkRef:
+            name: a3-ultra-gpunet-2
+          subnetworkRef:
+            name: a3-ultra-gpunet-2-subnet
+        - networkRef:
+            name: a3-ultra-gpunet-3
+          subnetworkRef:
+            name: a3-ultra-gpunet-3-subnet
+        - networkRef:
+            name: a3-ultra-gpunet-4
+          subnetworkRef:
+            name: a3-ultra-gpunet-4-subnet
+        - networkRef:
+            name: a3-ultra-gpunet-5
+          subnetworkRef:
+            name: a3-ultra-gpunet-5-subnet
+        - networkRef:
+            name: a3-ultra-gpunet-6
+          subnetworkRef:
+            name: a3-ultra-gpunet-6-subnet
+        - networkRef:
+            name: a3-ultra-gpunet-7
+          subnetworkRef:
+            name: a3-ultra-gpunet-7-subnet

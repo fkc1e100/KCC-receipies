@@ -1,0 +1,30 @@
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: ResourceFlavor
+metadata:
+  name: {{ .Values.kueue.resources.flavor.name }}
+spec:
+  nodeLabels:
+{{ toYaml .Values.kueue.resources.flavor.nodeLabels | indent 4 }}
+---
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: ClusterQueue
+metadata:
+  name: {{ .Values.kueue.resources.clusterQueue.name }}
+spec:
+  namespaceSelector: {} # Allow all namespaces by default
+  queueingStrategy: {{ .Values.kueue.resources.clusterQueue.strategy }}
+  resourceGroups:
+  - coveredResources: ["nvidia.com/gpu"]
+    flavors:
+    - name: {{ .Values.kueue.resources.flavor.name }}
+      resources:
+      - name: "nvidia.com/gpu"
+        nominalQuota: {{ .Values.kueue.resources.clusterQueue.nominalQuota }}
+---
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: LocalQueue
+metadata:
+  name: {{ .Values.kueue.resources.localQueue.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  clusterQueue: {{ .Values.kueue.resources.clusterQueue.name }}

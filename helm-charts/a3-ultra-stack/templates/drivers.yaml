@@ -1,0 +1,39 @@
+{{- if .Values.drivers.tcpxo.enabled }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nccl-tcpxo-installer
+  namespace: kube-system
+  labels:
+    app: nccl-tcpxo-installer
+spec:
+  selector:
+    matchLabels:
+      app: nccl-tcpxo-installer
+  template:
+    metadata:
+      labels:
+        app: nccl-tcpxo-installer
+    spec:
+      hostNetwork: true
+      hostPID: true
+      nodeSelector:
+        cloud.google.com/gke-accelerator: nvidia-h100-mega-80gb # Adjust based on cluster type
+      containers:
+      - name: install-plugin
+        image: {{ .Values.drivers.tcpxo.image }}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: host-usr-local-nvidia
+          mountPath: /usr/local/nvidia
+        - name: host-etc-nvidia
+          mountPath: /etc/nvidia
+      volumes:
+      - name: host-usr-local-nvidia
+        hostPath:
+          path: /home/kubernetes/bin/nvidia
+      - name: host-etc-nvidia
+        hostPath:
+          path: /etc/nvidia
+{{- end }}

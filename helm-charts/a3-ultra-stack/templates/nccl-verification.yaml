@@ -1,0 +1,40 @@
+{{- if .Values.workloads.nccl.enabled }}
+apiVersion: jobset.x-k8s.io/v1alpha2
+kind: JobSet
+metadata:
+  name: nccl-test-verification
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: nccl-verification
+spec:
+  replicatedJobs:
+  - name: workers
+    template:
+      spec:
+        parallelism: {{ .Values.workloads.nccl.parallelism }}
+        completions: {{ .Values.workloads.nccl.parallelism }}
+        template:
+          metadata:
+            labels:
+              kueue.x-k8s.io/queue-name: {{ .Values.kueue.resources.localQueue.name }} # Submit to our LocalQueue
+          spec:
+            hostNetwork: true
+            dnsPolicy: ClusterFirstWithHostNet
+            nodeSelector:
+{{ toYaml .Values.workloads.nccl.nodeSelector | indent 14 }}
+            containers:
+            - name: nccl-test
+              image: {{ .Values.workloads.nccl.image }}
+              command:
+              - /bin/bash
+              - -c
+              - |
+                echo "Starting NCCL test verification..."
+                nvidia-smi
+                # Basic connectivity check or actual NCCL run command here
+                # For now, we sleep to keep pod alive for manual exec/verification
+                sleep infinity
+              resources:
+                limits:
+                  nvidia.com/gpu: 8
+{{- end }}

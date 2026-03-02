@@ -1,0 +1,65 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-vpc
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-vpc
+  ipCidrRange: "10.0.0.0/20"
+  secondaryIpRange:
+    - rangeName: pods
+      ipCidrRange: "10.4.0.0/14"
+    - rangeName: services
+      ipCidrRange: "10.0.32.0/20"
+
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeRouter
+metadata:
+  name: a3-ultra-router
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-vpc
+
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeRouterNAT
+metadata:
+  name: a3-ultra-nat
+  namespace: config-control
+spec:
+  region: us-central1
+  routerRef:
+    name: a3-ultra-router
+  sourceSubnetworkIpRangesToNat: ALL_SUBNETWORKS_ALL_IP_RANGES
+  natIpAllocateOption: AUTO_ONLY

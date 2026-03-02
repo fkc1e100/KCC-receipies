@@ -1,0 +1,177 @@
+# Copyright 2024 Google LLC
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-gpunet-0
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-gpunet-0-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-gpunet-0
+  ipCidrRange: "192.169.0.0/20"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-gpunet-1
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-gpunet-1-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-gpunet-1
+  ipCidrRange: "192.169.16.0/20"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-gpunet-2
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-gpunet-2-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-gpunet-2
+  ipCidrRange: "192.169.32.0/20"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-gpunet-3
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-gpunet-3-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-gpunet-3
+  ipCidrRange: "192.169.48.0/20"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-gpunet-4
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-gpunet-4-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-gpunet-4
+  ipCidrRange: "192.169.64.0/20"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-gpunet-5
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-gpunet-5-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-gpunet-5
+  ipCidrRange: "192.169.80.0/20"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-gpunet-6
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-gpunet-6-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-gpunet-6
+  ipCidrRange: "192.169.96.0/20"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-gpunet-7
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-gpunet-7-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-gpunet-7
+  ipCidrRange: "192.169.112.0/20"

@@ -1,0 +1,43 @@
+# Default Values
+drivers:
+  tcpxo:
+    enabled: false
+    image: "us-docker.pkg.dev/gce-ai-infra/gpudirect-tcpxo/nccl-plugin-gpudirect-tcpxo:v1.0.4"
+
+jobset:
+  enabled: true
+  tolerations:
+  - key: "components.gke.io/gke-managed-components"
+    operator: "Exists"
+    effect: "NoSchedule"
+
+kueue:
+  enabled: true
+  version: "v0.13.3"
+  tolerations:
+  - key: "components.gke.io/gke-managed-components"
+    operator: "Exists"
+    effect: "NoSchedule"
+  resources:
+    # Default ResourceFlavor for A2 HighGPU (A100-40GB)
+    flavor:
+      name: "nvidia-tesla-a100"
+      nodeLabels: 
+        cloud.google.com/gke-accelerator: "nvidia-tesla-a100"
+    # Default ClusterQueue to manage the global quota
+    clusterQueue:
+      name: "cluster-queue"
+      strategy: "BestEffortFIFO"
+      nominalQuota: 16 # Adjust based on actual cluster size
+    # Default LocalQueue in the release namespace
+    localQueue:
+      name: "default-queue"
+
+workloads:
+  nccl:
+    enabled: false
+    image: "gcr.io/deeplearning-platform-release/base-cu113.py310"
+    gpus: 16 # 2 nodes * 8 GPUs
+    parallelism: 2 # Number of nodes/pods
+    nodeSelector:
+      cloud.google.com/gke-accelerator: "nvidia-tesla-a100"

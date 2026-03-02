@@ -1,0 +1,23 @@
+# Copyright 2024 Google LLC
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  name: a3-ultra-data-net
+  namespace: config-control
+spec:
+  routingMode: REGIONAL
+  autoCreateSubnetworks: false
+  mtu: 8244
+
+---
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeSubnetwork
+metadata:
+  name: a3-ultra-data-subnet
+  namespace: config-control
+spec:
+  region: us-central1
+  networkRef:
+    name: a3-ultra-data-net
+  ipCidrRange: "10.100.0.0/24"
