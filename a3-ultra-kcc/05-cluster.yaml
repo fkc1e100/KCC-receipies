@@ -40,5 +40,4 @@ spec:
   ipAllocationPolicy:
     clusterSecondaryRangeName: pods
     servicesSecondaryRangeName: services
-  removeDefaultNodePool: true
   initialNodeCount: 1

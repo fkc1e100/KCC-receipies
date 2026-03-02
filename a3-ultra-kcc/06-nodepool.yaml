@@ -26,8 +26,6 @@ spec:
   autoscaling:
     totalMinNodeCount: 0
     totalMaxNodeCount: 128
-  queuedProvisioning:
-    enabled: true
   nodeConfig:
     machineType: a3-ultragpu-8g
     serviceAccountRef:
@@ -37,41 +35,41 @@ spec:
         type: nvidia-h200-80gb
         gpuDriverInstallationConfig:
           gpuDriverVersion: LATEST
-    networkConfig:
-      additionalNodeNetworkConfigs:
-        - networkRef:
-            name: a3-ultra-data-net
-          subnetworkRef:
-            name: a3-ultra-data-subnet
-        - networkRef:
-            name: a3-ultra-gpunet-0
-          subnetworkRef:
-            name: a3-ultra-gpunet-0-subnet
-        - networkRef:
-            name: a3-ultra-gpunet-1
-          subnetworkRef:
-            name: a3-ultra-gpunet-1-subnet
-        - networkRef:
-            name: a3-ultra-gpunet-2
-          subnetworkRef:
-            name: a3-ultra-gpunet-2-subnet
-        - networkRef:
-            name: a3-ultra-gpunet-3
-          subnetworkRef:
-            name: a3-ultra-gpunet-3-subnet
-        - networkRef:
-            name: a3-ultra-gpunet-4
-          subnetworkRef:
-            name: a3-ultra-gpunet-4-subnet
-        - networkRef:
-            name: a3-ultra-gpunet-5
-          subnetworkRef:
-            name: a3-ultra-gpunet-5-subnet
-        - networkRef:
-            name: a3-ultra-gpunet-6
-          subnetworkRef:
-            name: a3-ultra-gpunet-6-subnet
-        - networkRef:
-            name: a3-ultra-gpunet-7
-          subnetworkRef:
-            name: a3-ultra-gpunet-7-subnet
+  networkConfig:
+    additionalNodeNetworkConfigs:
+      - networkRef:
+          name: a3-ultra-data-net
+        subnetworkRef:
+          name: a3-ultra-data-subnet
+      - networkRef:
+          name: a3-ultra-gpunet-0
+        subnetworkRef:
+          name: a3-ultra-gpunet-0-subnet
+      - networkRef:
+          name: a3-ultra-gpunet-1
+        subnetworkRef:
+          name: a3-ultra-gpunet-1-subnet
+      - networkRef:
+          name: a3-ultra-gpunet-2
+        subnetworkRef:
+          name: a3-ultra-gpunet-2-subnet
+      - networkRef:
+          name: a3-ultra-gpunet-3
+        subnetworkRef:
+          name: a3-ultra-gpunet-3-subnet
+      - networkRef:
+          name: a3-ultra-gpunet-4
+        subnetworkRef:
+          name: a3-ultra-gpunet-4-subnet
+      - networkRef:
+          name: a3-ultra-gpunet-5
+        subnetworkRef:
+          name: a3-ultra-gpunet-5-subnet
+      - networkRef:
+          name: a3-ultra-gpunet-6
+        subnetworkRef:
+          name: a3-ultra-gpunet-6-subnet
+      - networkRef:
+          name: a3-ultra-gpunet-7
+        subnetworkRef:
+          name: a3-ultra-gpunet-7-subnet

@@ -9,6 +9,7 @@ spec:
   routingMode: REGIONAL
   autoCreateSubnetworks: false
   mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeSubnetwork
@@ -30,6 +31,7 @@ spec:
   routingMode: REGIONAL
   autoCreateSubnetworks: false
   mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeSubnetwork
@@ -51,6 +53,7 @@ spec:
   routingMode: REGIONAL
   autoCreateSubnetworks: false
   mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeSubnetwork
@@ -72,6 +75,7 @@ spec:
   routingMode: REGIONAL
   autoCreateSubnetworks: false
   mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeSubnetwork
@@ -93,6 +97,7 @@ spec:
   routingMode: REGIONAL
   autoCreateSubnetworks: false
   mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeSubnetwork
@@ -114,6 +119,7 @@ spec:
   routingMode: REGIONAL
   autoCreateSubnetworks: false
   mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeSubnetwork
@@ -135,6 +141,7 @@ spec:
   routingMode: REGIONAL
   autoCreateSubnetworks: false
   mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeSubnetwork
@@ -156,6 +163,7 @@ spec:
   routingMode: REGIONAL
   autoCreateSubnetworks: false
   mtu: 8244
+  networkProfile: "https://www.googleapis.com/compute/v1/projects/${PROJECT_ID}/global/networkProfiles/us-central1-b-vpc-roce"
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeSubnetwork
